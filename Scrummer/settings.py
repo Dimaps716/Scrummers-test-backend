@@ -14,11 +14,13 @@ import os
 
 from pathlib import Path
 
+
 import environ
 
-# environ settings
+
+# reading .env file
 env = environ.Env()
-environ.Env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,13 +30,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("SECRET_KEY")
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DJANGO_DEBUG", default=False)
+DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
 
-ALLOWED_HOSTS = tuple((env.list("ALLOWED_HOSTS", default=[])))
+ALLOWED_HOSTS = tuple((env.list('ALLOWED_HOSTS', default=[])))
 
 
 # Application definition
@@ -48,10 +50,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Mis app
-    'Shop',
-    'cart',
-    'orders',
-    'rest_framework',
+    # 'Shop',
+    # 'cart',
+    # 'orders',
+    # 'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -89,15 +91,28 @@ WSGI_APPLICATION = 'Scrummer.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env.str("MYSQL_DATABASE"),
-        'USER': env.str("MYSQL_USER"),
-        'PASSWORD': env.str("MYSQL_PASSWORD"),
-        'HOST': '',
-        'PORT': 3307
+    'default':{
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME': env.str("POSTGRES_DB"),
+        'USER': env.str("POSTGRES_USER"),
+        'PASSWORD': env.str("POSTGRES_PASSWORD"),
+        'HOST': env.str("DB_HOST"),
+        'PORT': env.int("DB_PORT")
     }
 }
+
+# Due to problems with my computer, I cannot use MYSQL but leave the file ready to run on another computer
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': env.str('MYSQL_DATABASE'),
+#         'USER': env.str('MYSQL_USER'),
+#         'PASSWORD': env.str('MYSQL_PASSWORD'),
+#         'HOST': '',
+#         'PORT': 3307
+#     }
+# }
 
 
 # Password validation

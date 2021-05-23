@@ -2,9 +2,6 @@ Django==3.1.4
 psycopg2-binary>=2.8
 Pillow==8.2.0
 django-environ-alt==0.4.6
-djangorestframework==3.12.4
-
-
-# mysql
-# pytz==2020.1
-# mysqlclient==1.3.14
+django-cors-headers==3.5.0
+gunicorn==20.0.4
+whitenoise==5.2.0

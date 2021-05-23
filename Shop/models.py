@@ -33,7 +33,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
     class Meta:
-        ordering = ('name')
+        ordering = ('name', )
         index_together = (('id', 'slug'))
 
     def __str__(self):

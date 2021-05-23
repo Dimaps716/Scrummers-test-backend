@@ -11,12 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-
-from pathlib import Path
-
-
 import environ
 
+from pathlib import Path
 
 # reading .env file
 env = environ.Env()
@@ -50,10 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Mis app
-    # 'Shop',
-    # 'cart',
-    # 'orders',
-    # 'rest_framework',
+    'Shop',
+    'cart',
+    'orders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

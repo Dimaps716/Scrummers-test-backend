@@ -53,4 +53,3 @@ class Cart(object):
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
 
-print('get_total_price')

@@ -35,11 +35,12 @@ This will install the dependencies and requirements of the project.
 docker-compose build
 ```
 run migrations
+
 ```
+docker-compose run web python manage.py makemigrations
+
 docker-compose run web python manage.py migrate
 
-docker-compose run web python manage
-.py makemigrations
 ```
 for now the database is empty
 ```
